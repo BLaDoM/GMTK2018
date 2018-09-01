@@ -51,15 +51,19 @@ func _physics_process(delta):
 
 	#Move right
 	if Input.is_action_pressed("ui_right") and vel.x < SPEED*2:
-		if is_on_floor():
+		if is_on_floor() and ($Reload.is_stopped() or $Reload.time_left < .8):
+			#Ground movement speed
 			vel.x += SPEED
 		else:
+			#Air movement speed
 			vel.x += SPEED*.1
 	#Move left
 	if Input.is_action_pressed("ui_left") and vel.x > -SPEED*2:
-		if is_on_floor():
+		if is_on_floor() and ($Reload.is_stopped() or $Reload.time_left < .8):
+			#Ground movement speed
 			vel.x += -SPEED
 		else:
+			#Air movement speed
 			vel.x += -SPEED*.1
 	
 	#Gravity
@@ -77,7 +81,10 @@ func _physics_process(delta):
 		vel.x *= AIR_FRICTION
 	#On wall
 	if is_on_wall():
-		vel.x += (abs(vel.x) / vel.x) * WALL_FRICTION
+		#Slide
+		#vel.x += (abs(vel.x) / vel.x) * WALL_FRICTION
+		#Bounce
+		vel.x = vel.x * .3 * -1
 	#On ceiling
 	if is_on_ceiling() and vel.y < 0:
 		vel.y = 0
