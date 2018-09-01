@@ -130,7 +130,7 @@ func _input(event):
 			shoot()
 
 func shoot():
-	vel += Vector2(-angle_vector.x * KICKBACK, -abs(angle_vector.y) * KICKBACK)
+	vel += Vector2(-angle_vector.x * KICKBACK * 1.2, -abs(angle_vector.y) * KICKBACK * 1)
 	bullet = bullet_resource.instance()
 	bullet.set_position(get_position())
 	bullet.angle = angle
