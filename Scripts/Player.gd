@@ -1,12 +1,12 @@
 extends KinematicBody2D
 
-const SPEED = 70
-const GRAVITY = 10
-const KICKBACK = 500
-const GROUND_FRICTION = .8
-const AIR_FRICTION = .98
-const WALL_FRICTION = .6
-const MAX_HEALTH = 6
+export var SPEED = 70
+export var GRAVITY = 10
+export var KICKBACK = 500
+export var GROUND_FRICTION = .8
+export var AIR_FRICTION = .98
+export var WALL_FRICTION = .6
+export var MAX_HEALTH = 6
 
 export var type = 'Player'
 
@@ -40,11 +40,9 @@ func _ready():
 
 func _physics_process(delta):
 	#Debug
-	#print($PlayerSprite.get_modulate())
-	#print(get_viewport_rect())
 
-	#Death plane
-	if get_position().y > 450:
+	#Die if outside of screen
+	if self.get_global_transform_with_canvas().get_origin().x < 0 or self.get_global_transform_with_canvas().get_origin().x > get_viewport_rect().size.x or self.get_global_transform_with_canvas().get_origin().y > get_viewport_rect().size.y:
 		die()
 
 	#Movement
@@ -97,7 +95,13 @@ func _physics_process(delta):
 	#RotateGun
 	angle = atan2(mouse_pos.x, -mouse_pos.y)*(180/PI)
 	angle_vector = Vector2(sin(angle*(PI/180)), cos(angle*(PI/180)))
-	$Gun.set_rotation_degrees(angle)
+	$Gun.set_rotation_degrees(angle - 90)
+
+	#Flip sprite
+	if angle < 0:
+		$Gun.flip_v = true
+	else:
+		$Gun.flip_v = false
 
 	#White flash
 	get_node("PlayerSprite").modulate = color
@@ -151,8 +155,8 @@ func _on_Reload_timeout():
 
 func die():
 	health.value = MAX_HEALTH
-	health.set_visible(false)
-	reset()
+	#health.set_visible(false)
+	get_parent().load_level(0)
 
 func reset():
 	set_position(Vector2(0,0))

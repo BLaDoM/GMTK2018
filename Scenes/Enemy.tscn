@@ -3,11 +3,10 @@
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Assets/placeholder_32x32.png" type="Texture" id=2]
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
-radius = 11.2759
-height = 7.99216
+extents = Vector2( 10, 15.2735 )
 
 [sub_resource type="SegmentShape2D" id=2]
 
@@ -24,6 +23,13 @@ collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision" ]
 SPEED = 20
+GRAVITY = 10
+KICKBACK = 500
+GROUND_FRICTION = 0.97
+AIR_FRICTION = 0.98
+WALL_FRICTION = 0.6
+enemy_type = "Basic"
+can_fly = false
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
@@ -32,11 +38,12 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="Left" type="Area2D" parent="." index="2"]
 
 editor/display_folded = true
+visible = false
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -44,6 +51,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left" index="0"]
 
@@ -53,6 +61,7 @@ shape = SubResource( 2 )
 [node name="Left2" type="Area2D" parent="." index="3"]
 
 editor/display_folded = true
+visible = false
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -63,12 +72,13 @@ audio_bus_name = "Master"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left2" index="0"]
 
-position = Vector2( -16.511, -4.9052 )
+position = Vector2( -13.2263, -5.02993 )
 shape = SubResource( 2 )
 
 [node name="Right" type="Area2D" parent="." index="4"]
 
 editor/display_folded = true
+visible = false
 position = Vector2( -0.314026, 0 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -86,7 +96,8 @@ shape = SubResource( 2 )
 [node name="Right2" type="Area2D" parent="." index="5"]
 
 editor/display_folded = true
-position = Vector2( 0.209351, -23.761 )
+visible = false
+position = Vector2( -0.372742, -23.761 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -97,7 +108,7 @@ audio_bus_name = "Master"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right2" index="0"]
 
-position = Vector2( 16.6935, 18.9688 )
+position = Vector2( 14.0741, 19.0935 )
 shape = SubResource( 2 )
 
 

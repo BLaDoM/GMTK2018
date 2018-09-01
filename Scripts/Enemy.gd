@@ -1,27 +1,98 @@
 extends KinematicBody2D
 
 export var SPEED = 20
+export var GRAVITY = 10
+export var KICKBACK = 500
+export var GROUND_FRICTION = .97
+export var AIR_FRICTION = .98
+export var WALL_FRICTION = .6
+
+onready var explosion_resource = preload("res://Scenes/Explosion.tscn")
+
+var explosion
 
 var type = 'Enemy'
+export var enemy_type = 'Basic'
+export var can_fly = false
 var vel = Vector2()
 var dir = 1
+var health = 1
+var bob = 1
+var color = Color(1,1,1,1)
 
 func _ready():
-	vel = Vector2(0, 500)
+	#Initialize bobbing
+	randomize()
+	bob = randf()*2 / 2
+
+	health = 1
+	if enemy_type == 'Tank':
+		health = 2
+		set_scale(Vector2(1.5, 1.5))
+	if enemy_type == 'Boom':
+		set_modulate(Color(1,10,1,1))
 	pass
 
 func _physics_process(delta):
-	if $Right.get_overlapping_bodies().size() and !$Left.get_overlapping_bodies().size():
-		dir = 1
-	if !$Right.get_overlapping_bodies().size() and $Left.get_overlapping_bodies().size():
-		dir = -1
-	if $Right2.get_overlapping_bodies().size() and !$Left2.get_overlapping_bodies().size():
-		dir = -1
-	if !$Right2.get_overlapping_bodies().size() and $Left2.get_overlapping_bodies().size():
-		dir = 1
-	vel.x += SPEED*dir
-	vel.x *= .8
-	move_and_slide(vel)
+	if health <= 0:
+		die()
+
+	#Gravity
+	if !can_fly:
+		vel.y += GRAVITY
+
+	if enemy_type == 'Basic'  and !can_fly:
+		if $Right.get_overlapping_bodies().size() and !$Left.get_overlapping_bodies().size():
+			dir = 1
+		if !$Right.get_overlapping_bodies().size() and $Left.get_overlapping_bodies().size():
+			dir = -1
+		if $Right2.get_overlapping_bodies().size() and !$Left2.get_overlapping_bodies().size():
+			dir = -1
+		if !$Right2.get_overlapping_bodies().size() and $Left2.get_overlapping_bodies().size():
+			dir = 1
+		vel.x += SPEED*dir*.2
+
+	move_and_slide(vel, Vector2(0, -1))
+
+	#On floor
+	if is_on_floor():
+		vel.y = 0
+		vel.x *= GROUND_FRICTION
+	else:
+		if can_fly:
+			vel *= AIR_FRICTION * .8
+		else:
+			vel.x *= AIR_FRICTION
+	#On wall
+	if is_on_wall():
+		vel.x = vel.x * .3 * -1
+	#On ceiling
+	if is_on_ceiling() and vel.y < 0:
+		vel.y = 0
 
 	#Bobbing sprite
 	$Sprite.set_position(Vector2(0, cos(get_position().x/5)*2))
+	if can_fly:
+		$Sprite.set_position(Vector2(0, cos(bob)))
+		bob += .1
+
+	#Color flash
+	get_node("Sprite").modulate = color
+	if color.r > 1:
+		color.r *= .8
+	if color.g > 1:
+		color.g *= .8
+	if color.b > 1:
+		color.b *= .8
+	color.a = 1
+
+func die():
+	if enemy_type == 'Boom':
+		explosion = explosion_resource.instance()
+		explosion.set_position(get_position())
+		get_parent().add_child(explosion)
+	queue_free()
+
+func damaged():
+	health -= 1
+	color = Color(10,1,1,1)
