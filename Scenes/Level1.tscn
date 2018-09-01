@@ -5,7 +5,7 @@
 [ext_resource path="res://Scenes/Goal.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Obstacle.tscn" type="PackedScene" id=4]
 
-[node name="Level1" type="TileMap"]
+[node name="Level1" type="TileMap" index="0"]
 
 mode = 0
 tile_set = ExtResource( 1 )
@@ -28,17 +28,34 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Enemy" parent="." index="0" instance=ExtResource( 2 )]
 
-position = Vector2( 184.209, 10.8145 )
+position = Vector2( 314.169, -83.9481 )
+can_fly = true
 
-[node name="Enemy2" parent="." index="1" instance=ExtResource( 2 )]
+[node name="Enemy3" parent="." index="1" instance=ExtResource( 2 )]
 
-position = Vector2( 570.088, -19.3323 )
+position = Vector2( 203.162, -15.358 )
 
-[node name="Goal" parent="." index="2" instance=ExtResource( 3 )]
+[node name="Enemy4" parent="." index="2" instance=ExtResource( 2 )]
+
+position = Vector2( 376.442, -11.748 )
+can_fly = true
+
+[node name="Enemy5" parent="." index="3" instance=ExtResource( 2 )]
+
+position = Vector2( 422.469, -106.511 )
+can_fly = true
+
+[node name="Enemy2" parent="." index="4" instance=ExtResource( 2 )]
+
+position = Vector2( 432.908, 70.0153 )
+enemy_type = "Tank"
+can_fly = true
+
+[node name="Goal" parent="." index="5" instance=ExtResource( 3 )]
 
 position = Vector2( 430, 230 )
 
-[node name="Label" type="Label" parent="." index="3"]
+[node name="Label" type="Label" parent="." index="6"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -58,7 +75,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="Label2" type="Label" parent="." index="4"]
+[node name="Label2" type="Label" parent="." index="7"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -79,7 +96,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="Obstacle" parent="." index="5" instance=ExtResource( 4 )]
+[node name="Obstacle" parent="." index="8" instance=ExtResource( 4 )]
 
 position = Vector2( 539.469, 31.7335 )
 

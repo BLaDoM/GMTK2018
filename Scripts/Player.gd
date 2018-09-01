@@ -1,12 +1,12 @@
 extends KinematicBody2D
 
-const SPEED = 70
-const GRAVITY = 10
-const KICKBACK = 500
-const GROUND_FRICTION = .8
-const AIR_FRICTION = .98
-const WALL_FRICTION = .6
-const MAX_HEALTH = 6
+export var SPEED = 70
+export var GRAVITY = 10
+export var KICKBACK = 500
+export var GROUND_FRICTION = .8
+export var AIR_FRICTION = .98
+export var WALL_FRICTION = .6
+export var MAX_HEALTH = 6
 
 export var type = 'Player'
 
@@ -151,7 +151,7 @@ func _on_Reload_timeout():
 
 func die():
 	health.value = MAX_HEALTH
-	health.set_visible(false)
+	#health.set_visible(false)
 	reset()
 
 func reset():

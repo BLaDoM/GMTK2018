@@ -28,6 +28,13 @@ collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+SPEED = 70
+GRAVITY = 10
+KICKBACK = 500
+GROUND_FRICTION = 0.8
+AIR_FRICTION = 0.98
+WALL_FRICTION = 0.6
+MAX_HEALTH = 6
 type = "Player"
 
 [node name="PlayerSprite" type="Sprite" parent="." index="0"]
@@ -80,6 +87,7 @@ autostart = false
 
 [node name="Area2D" type="Area2D" parent="." index="5"]
 
+visible = false
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0

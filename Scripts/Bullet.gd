@@ -17,7 +17,7 @@ func _physics_process(delta):
 			if body.get_class() == 'KinematicBody2D' and body.type == 'Enemy':
 				get_node("../../Player").color = Color(10,10,10,1)
 				get_node("../../Player/Reload").stop()
-				body.queue_free()
+				body.health -= 1
 			queue_free()
 
 func _on_Life_timeout():
