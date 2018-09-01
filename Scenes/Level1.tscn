@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://TileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Goal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Obstacle.tscn" type="PackedScene" id=4]
 
 [node name="Level1" type="TileMap"]
 
@@ -27,13 +28,17 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Enemy" parent="." index="0" instance=ExtResource( 2 )]
 
-position = Vector2( 150, 10 )
+position = Vector2( 184.209, 10.8145 )
 
-[node name="Goal" parent="." index="1" instance=ExtResource( 3 )]
+[node name="Enemy2" parent="." index="1" instance=ExtResource( 2 )]
+
+position = Vector2( 570.088, -19.3323 )
+
+[node name="Goal" parent="." index="2" instance=ExtResource( 3 )]
 
 position = Vector2( 430, 230 )
 
-[node name="Label" type="Label" parent="." index="2"]
+[node name="Label" type="Label" parent="." index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -53,7 +58,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="Label2" type="Label" parent="." index="3"]
+[node name="Label2" type="Label" parent="." index="4"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -73,5 +78,9 @@ text = "lol ur bad"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="Obstacle" parent="." index="5" instance=ExtResource( 4 )]
+
+position = Vector2( 539.469, 31.7335 )
 
 

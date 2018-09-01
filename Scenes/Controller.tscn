@@ -17,9 +17,7 @@ NUMBER_OF_LEVELS = 4
 
 anchor_mode = 1
 rotating = false
-
 current = true
-
 zoom = Vector2( 1.6, 1.6 )
 limit_left = -10000000
 limit_top = -10000000

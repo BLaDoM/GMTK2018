@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/placeholder_32x32.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Placeholder.jpg" type="Texture" id=3]
 [ext_resource path="res://Assets/healthboxplaceholder.png" type="Texture" id=4]
 [ext_resource path="res://Assets/healthplaceholder.png.png" type="Texture" id=5]
+[ext_resource path="res://Sound/Shoot_Back_Line_1_Percussion.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Sound/Shoot_Back_Line_2_Lowend.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Sound/Shoot_Back_Line_3_Midend.ogg" type="AudioStream" id=8]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -18,7 +21,7 @@ custom_solver_bias = 0.0
 radius = 14.6332
 height = 9.80283
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -136,6 +139,33 @@ radial_fill_degrees = 360.0
 radial_center_offset = Vector2( 0, 0 )
 nine_patch_stretch = false
 _sections_unfolded = [ "Rect", "Textures" ]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="8"]
+
+stream = ExtResource( 6 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+mix_target = 0
+bus = "Master"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." index="9"]
+
+stream = ExtResource( 7 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+mix_target = 0
+bus = "Master"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="." index="10"]
+
+stream = ExtResource( 8 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+mix_target = 0
+bus = "Master"
 
 [connection signal="timeout" from="Reload" to="." method="_on_Reload_timeout"]
 
