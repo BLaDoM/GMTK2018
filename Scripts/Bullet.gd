@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 const SPEED = 500
 
+export var type = 'Bullet'
+
 var angle
 var angle_vector
 
