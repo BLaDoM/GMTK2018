@@ -1,6 +1,7 @@
 extends Area2D
 
-export var EXPLOSION_POWER = 1.5
+export var power = 1.5
+export var PLAYER_POWER_MODIFIER = .2
 
 var bodies
 
@@ -23,4 +24,7 @@ func _process(delta):
 	bodies = get_overlapping_bodies()
 	for body in bodies:
 		if body.get_class() == 'KinematicBody2D':
-			body.vel += (body.get_position() - get_position()) * EXPLOSION_POWER
+			if body.name == 'Player':
+				body.vel += (body.get_position() - get_position()) * power * PLAYER_POWER_MODIFIER
+			else:
+				body.vel += (body.get_position() - get_position()) * power

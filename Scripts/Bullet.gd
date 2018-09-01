@@ -4,6 +4,9 @@ const SPEED = 500
 
 export var type = 'Bullet'
 
+onready var explosion_resource = preload("res://Scenes/Explosion.tscn")
+var explosion
+
 var angle
 var angle_vector
 
@@ -26,4 +29,8 @@ func _on_Life_timeout():
 	die()
 
 func die():
+	explosion = explosion_resource.instance()
+	explosion.set_position(get_position())
+	get_parent().add_child(explosion)
+	explosion.power = .3
 	queue_free()
