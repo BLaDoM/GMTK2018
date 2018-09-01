@@ -8,6 +8,7 @@ var angle
 var angle_vector
 
 func _ready():
+	get_node("../..").shake_amount = 5
 	set_rotation_degrees(angle)
 
 func _physics_process(delta):
@@ -17,8 +18,12 @@ func _physics_process(delta):
 			if body.get_class() == 'KinematicBody2D' and body.type == 'Enemy':
 				get_node("../../Player").color = Color(10,10,10,1)
 				get_node("../../Player/Reload").stop()
-				body.health -= 1
-			queue_free()
+				body.damaged()
+				get_node("../..").shake_amount = 50
+			die()
 
 func _on_Life_timeout():
+	die()
+
+func die():
 	queue_free()

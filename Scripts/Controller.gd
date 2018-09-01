@@ -7,6 +7,7 @@ var enemy_resource = preload("res://Scenes/Enemy.tscn")
 var enemy
 var level = 1
 var number_of_enemies
+var shake_amount = 0
 
 func _ready():
 	randomize()
@@ -26,11 +27,16 @@ func _process(delta):
 				if tilenode.get_class() == 'KinematicBody2D' and tilenode.type == 'Enemy':
 					number_of_enemies += 1
 	if number_of_enemies == 0:
-		next_level()
+		load_level(1)
 
-func next_level():
+	#Very basic screen shake
+	$Camera2D.set_offset(Vector2( rand_range(-1.0, 1.0) * shake_amount, rand_range(-1.0, 1.0) * shake_amount ))
+	shake_amount *= .6
+
+#Loads the level plus number
+func load_level(number):
 	if NUMBER_OF_LEVELS > level:
-		get_node("Level" + str(level)).queue_free()
-		level += 1
+		remove_child(get_node("Level" + str(level)))
+		level += number
 		add_child(load("res://Scenes/Level" + str(level) + ".tscn").instance())
 		get_node("Player").reset()

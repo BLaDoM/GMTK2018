@@ -40,11 +40,9 @@ func _ready():
 
 func _physics_process(delta):
 	#Debug
-	#print($PlayerSprite.get_modulate())
-	#print(get_viewport_rect())
 
-	#Death plane
-	if get_position().y > 450:
+	#Die if outside of screen
+	if self.get_global_transform_with_canvas().get_origin().x < 0 or self.get_global_transform_with_canvas().get_origin().x > get_viewport_rect().size.x or self.get_global_transform_with_canvas().get_origin().y > get_viewport_rect().size.y:
 		die()
 
 	#Movement
@@ -152,7 +150,7 @@ func _on_Reload_timeout():
 func die():
 	health.value = MAX_HEALTH
 	#health.set_visible(false)
-	reset()
+	get_parent().load_level(0)
 
 func reset():
 	set_position(Vector2(0,0))

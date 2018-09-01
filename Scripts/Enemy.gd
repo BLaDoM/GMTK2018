@@ -9,6 +9,7 @@ var vel = Vector2()
 var dir = 1
 var health = 1
 var bob = 1
+var color = Color(1,1,1,1)
 
 func _ready():
 	#Initialize bobbing
@@ -19,7 +20,7 @@ func _ready():
 	health = 1
 	if enemy_type == 'Tank':
 		health = 4
-		set_scale(Vector2(1.2, 1.2))
+		set_scale(Vector2(1.5, 1.5))
 	if can_fly == true:
 		vel = Vector2(0, 0)
 	pass
@@ -48,5 +49,19 @@ func _physics_process(delta):
 		$Sprite.set_position(Vector2(0, cos(bob)))
 		bob += .1
 
+	#Color flash
+	get_node("Sprite").modulate = color
+	if color.r > 1:
+		color.r *= .8
+	if color.g > 1:
+		color.g *= .8
+	if color.b > 1:
+		color.b *= .8
+	color.a = 1
+
 func die():
 	queue_free()
+
+func damaged():
+	health -= 1
+	color = Color(10,1,1,1)
