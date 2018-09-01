@@ -22,3 +22,6 @@ func _physics_process(delta):
 	vel.x += SPEED*dir
 	vel.x *= .8
 	move_and_slide(vel)
+
+	#Bobbing sprite
+	$Sprite.set_position(Vector2(0, cos(get_position().x/5)*2))

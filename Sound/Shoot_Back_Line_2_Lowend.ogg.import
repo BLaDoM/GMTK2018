@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Shoot_Back_Line_2_Lowend.ogg-6f2a749d37854d106543f2f013d65635.oggstr"
+
+[deps]
+
+source_file="res://Sound/Shoot_Back_Line_2_Lowend.ogg"
+dest_files=[ "res://.import/Shoot_Back_Line_2_Lowend.ogg-6f2a749d37854d106543f2f013d65635.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

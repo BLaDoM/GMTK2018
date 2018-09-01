@@ -120,6 +120,10 @@ func _physics_process(delta):
 				"""if body.name == 'Goal':
 					get_parent().next_level()"""
 
+	#Temp sprite bobbing
+	if is_on_floor():
+		$PlayerSprite.set_position(Vector2(0, cos(get_position().x/10)*2))
+
 func _input(event):
 	#Debug
 	"""if event.get_class() != 'InputEventMouseMotion':
@@ -130,7 +134,9 @@ func _input(event):
 			shoot()
 
 func shoot():
-	vel += Vector2(-angle_vector.x * KICKBACK * 1.2, -abs(angle_vector.y) * KICKBACK * 1)
+	vel += Vector2(-angle_vector.x * KICKBACK * 1.2, angle_vector.y * KICKBACK * 1)
+	if is_on_floor() and angle_vector.y * KICKBACK * 1 > 0:
+		vel.y += (-angle_vector.y * KICKBACK * .8)*2
 	bullet = bullet_resource.instance()
 	bullet.set_position(get_position())
 	bullet.angle = angle
