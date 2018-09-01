@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/placeholder_32x32.png" type="Texture" id=2]
-[ext_resource path="res://Assets/gunplaceholder.png" type="Texture" id=3]
+[ext_resource path="res://Assets/final BIG   FUCKING       GUN.png" type="Texture" id=3]
 [ext_resource path="res://Assets/healthboxplaceholder.png" type="Texture" id=4]
 [ext_resource path="res://Assets/healthplaceholder.png.png" type="Texture" id=5]
 [ext_resource path="res://Sound/Shoot_Back_Line_1_Percussion.ogg" type="AudioStream" id=6]
@@ -73,8 +73,9 @@ editor_draw_drag_margin = false
 
 [node name="Gun" type="Sprite" parent="." index="3"]
 
+scale = Vector2( 0.333, 0.333 )
 texture = ExtResource( 3 )
-_sections_unfolded = [ "Offset", "Visibility" ]
+_sections_unfolded = [ "Offset", "Transform", "Visibility" ]
 
 [node name="Reload" type="Timer" parent="." index="4"]
 
