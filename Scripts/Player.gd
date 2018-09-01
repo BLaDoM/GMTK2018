@@ -136,6 +136,8 @@ func _input(event):
 		if $Reload.is_stopped():
 			$Reload.start()
 			shoot()
+	if event.is_action_pressed("restart"):
+		die()
 
 func shoot():
 	vel += Vector2(-angle_vector.x * KICKBACK * 1.2, angle_vector.y * KICKBACK * 1)

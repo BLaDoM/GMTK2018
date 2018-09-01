@@ -14,6 +14,8 @@ func _ready():
 	pass
 
 func _process(delta):
+	if Input.is_action_pressed("key_exit"):
+      get_tree().quit()
 	#Debug
 	"""if randi()%100 == 1:
 		enemy = enemy_resource.instance()
