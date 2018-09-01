@@ -11,7 +11,6 @@ var shake_amount = 0
 
 func _ready():
 	randomize()
-	pass
 
 func _process(delta):
 	if Input.is_action_pressed("key_exit"):
