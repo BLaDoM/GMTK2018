@@ -18,13 +18,14 @@ custom_solver_bias = 0.0
 radius = 14.6332
 height = 9.80283
 
-[node name="Player" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+type = "Player"
 
 [node name="PlayerSprite" type="Sprite" parent="." index="0"]
 
@@ -106,16 +107,15 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="Health" type="TextureProgress" parent="UI" index="0"]
 
-visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 460.0
-margin_top = 250.0
-margin_right = 844.0
-margin_bottom = 314.0
-rect_scale = Vector2( 0.25, 0.25 )
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 416.0
+margin_bottom = 96.0
+rect_scale = Vector2( 0.5, 0.5 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1

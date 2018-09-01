@@ -8,6 +8,8 @@ const AIR_FRICTION = .98
 const WALL_FRICTION = .6
 const MAX_HEALTH = 6
 
+export var type = 'Player'
+
 var bullet_resource = preload("res://Scenes/Bullet.tscn")
 var bullet
 
@@ -42,25 +44,26 @@ func _physics_process(delta):
 	#print(get_viewport_rect())
 
 	#Death plane
-	if get_position().y > 2000:
+	if get_position().y > 450:
 		die()
-
-	#Resolution
-	res = get_viewport_rect().size
 
 	#Movement
 
 	#Move right
 	if Input.is_action_pressed("ui_right") and vel.x < SPEED*2:
-		if is_on_floor():
+		if is_on_floor() and ($Reload.is_stopped() or $Reload.time_left < .8):
+			#Ground movement speed
 			vel.x += SPEED
 		else:
+			#Air movement speed
 			vel.x += SPEED*.1
 	#Move left
 	if Input.is_action_pressed("ui_left") and vel.x > -SPEED*2:
-		if is_on_floor():
+		if is_on_floor() and ($Reload.is_stopped() or $Reload.time_left < .8):
+			#Ground movement speed
 			vel.x += -SPEED
 		else:
+			#Air movement speed
 			vel.x += -SPEED*.1
 	
 	#Gravity
@@ -78,7 +81,10 @@ func _physics_process(delta):
 		vel.x *= AIR_FRICTION
 	#On wall
 	if is_on_wall():
-		vel.x += (abs(vel.x) / vel.x) * WALL_FRICTION
+		#Slide
+		#vel.x += (abs(vel.x) / vel.x) * WALL_FRICTION
+		#Bounce
+		vel.x = vel.x * .3 * -1
 	#On ceiling
 	if is_on_ceiling() and vel.y < 0:
 		vel.y = 0
