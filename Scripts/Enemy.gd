@@ -1,6 +1,15 @@
 extends KinematicBody2D
 
 export var SPEED = 20
+export var GRAVITY = 10
+export var KICKBACK = 500
+export var GROUND_FRICTION = .97
+export var AIR_FRICTION = .98
+export var WALL_FRICTION = .6
+
+onready var explosion_resource = preload("res://Scenes/Explosion.tscn")
+
+var explosion
 
 var type = 'Enemy'
 export var enemy_type = 'Basic'
@@ -16,18 +25,21 @@ func _ready():
 	randomize()
 	bob = randf()*2 / 2
 
-	vel = Vector2(0, 500)
 	health = 1
 	if enemy_type == 'Tank':
-		health = 4
+		health = 2
 		set_scale(Vector2(1.5, 1.5))
-	if can_fly == true:
-		vel = Vector2(0, 0)
+	if enemy_type == 'Boom':
+		set_modulate(Color(1,10,1,1))
 	pass
 
 func _physics_process(delta):
 	if health <= 0:
 		die()
+
+	#Gravity
+	if !can_fly:
+		vel.y += GRAVITY
 
 	if enemy_type == 'Basic'  and !can_fly:
 		if $Right.get_overlapping_bodies().size() and !$Left.get_overlapping_bodies().size():
@@ -38,10 +50,25 @@ func _physics_process(delta):
 			dir = -1
 		if !$Right2.get_overlapping_bodies().size() and $Left2.get_overlapping_bodies().size():
 			dir = 1
-		vel.x += SPEED*dir
+		vel.x += SPEED*dir*.2
 
-	vel.x *= .8
-	move_and_slide(vel)
+	move_and_slide(vel, Vector2(0, -1))
+
+	#On floor
+	if is_on_floor():
+		vel.y = 0
+		vel.x *= GROUND_FRICTION
+	else:
+		if can_fly:
+			vel *= AIR_FRICTION * .8
+		else:
+			vel.x *= AIR_FRICTION
+	#On wall
+	if is_on_wall():
+		vel.x = vel.x * .3 * -1
+	#On ceiling
+	if is_on_ceiling() and vel.y < 0:
+		vel.y = 0
 
 	#Bobbing sprite
 	$Sprite.set_position(Vector2(0, cos(get_position().x/5)*2))
@@ -60,6 +87,10 @@ func _physics_process(delta):
 	color.a = 1
 
 func die():
+	if enemy_type == 'Boom':
+		explosion = explosion_resource.instance()
+		explosion.set_position(get_position())
+		get_parent().add_child(explosion)
 	queue_free()
 
 func damaged():

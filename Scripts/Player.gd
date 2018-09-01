@@ -95,7 +95,13 @@ func _physics_process(delta):
 	#RotateGun
 	angle = atan2(mouse_pos.x, -mouse_pos.y)*(180/PI)
 	angle_vector = Vector2(sin(angle*(PI/180)), cos(angle*(PI/180)))
-	$Gun.set_rotation_degrees(angle)
+	$Gun.set_rotation_degrees(angle - 90)
+
+	#Flip sprite
+	if angle < 0:
+		$Gun.flip_v = true
+	else:
+		$Gun.flip_v = false
 
 	#White flash
 	get_node("PlayerSprite").modulate = color

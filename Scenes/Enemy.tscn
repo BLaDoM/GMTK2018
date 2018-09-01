@@ -3,11 +3,10 @@
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Assets/placeholder_32x32.png" type="Texture" id=2]
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
-radius = 11.2759
-height = 7.99216
+extents = Vector2( 10, 15.2735 )
 
 [sub_resource type="SegmentShape2D" id=2]
 
@@ -24,6 +23,11 @@ collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision" ]
 SPEED = 20
+GRAVITY = 10
+KICKBACK = 500
+GROUND_FRICTION = 0.97
+AIR_FRICTION = 0.98
+WALL_FRICTION = 0.6
 enemy_type = "Basic"
 can_fly = false
 
@@ -34,8 +38,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
-visible = false
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="Left" type="Area2D" parent="." index="2"]
 
