@@ -13,8 +13,8 @@ func _physics_process(delta):
 	for body in $Area2D.get_overlapping_bodies():
 		if body and body.name != 'Player':
 			if body.get_class() == 'KinematicBody2D' and body.type == 'Enemy':
-				get_node("../Player").color = Color(10,10,10,1)
-				get_node("../Player/Reload").stop()
+				get_node("../../Player").color = Color(10,10,10,1)
+				get_node("../../Player/Reload").stop()
 				body.queue_free()
 			queue_free()
 
