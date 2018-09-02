@@ -13,7 +13,7 @@ extents = Vector2( 16, 16 )
 
 [node name="TileMap" type="Node2D"]
 
-[node name="Sprite" type="Sprite" parent="." index="0"]
+[node name="Wall" type="Sprite" parent="." index="0"]
 
 editor/display_folded = true
 texture = ExtResource( 1 )
@@ -23,7 +23,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Wall" type="StaticBody2D" parent="Sprite" index="0"]
+[node name="Wall" type="StaticBody2D" parent="Wall" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -34,12 +34,23 @@ friction = 1.0
 bounce = 0.0
 _sections_unfolded = [ "Collision" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Wall" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/Wall" index="0"]
 
 position = Vector2( 16, 16 )
 shape = SubResource( 1 )
 
-[node name="Sprite2" type="Sprite" parent="." index="1"]
+[node name="BackgroundWall" type="Sprite" parent="." index="1"]
+
+modulate = Color( 0.328125, 0.328125, 0.328125, 1 )
+position = Vector2( 0, 56 )
+texture = ExtResource( 1 )
+centered = false
+_sections_unfolded = [ "Transform", "Visibility" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Floor" type="Sprite" parent="." index="2"]
 
 editor/display_folded = true
 position = Vector2( 64, 0 )
@@ -50,7 +61,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Wall" type="StaticBody2D" parent="Sprite2" index="0"]
+[node name="Wall" type="StaticBody2D" parent="Floor" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -61,26 +72,37 @@ friction = 1.0
 bounce = 0.0
 _sections_unfolded = [ "Collision" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2/Wall" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/Wall" index="0"]
 
 position = Vector2( 16, 16 )
 shape = SubResource( 1 )
 
-[node name="plant 1" type="Sprite" parent="." index="2"]
+[node name="BackgroundFloor" type="Sprite" parent="." index="3"]
+
+modulate = Color( 0.484375, 0.484375, 0.484375, 1 )
+position = Vector2( 64, 56 )
+texture = ExtResource( 2 )
+centered = false
+_sections_unfolded = [ "Transform", "Visibility" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="plant 1" type="Sprite" parent="." index="4"]
 
 position = Vector2( 144, 16 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, 2 )
 _sections_unfolded = [ "Offset" ]
 
-[node name="plant 1.5" type="Sprite" parent="." index="3"]
+[node name="plant 1.5" type="Sprite" parent="." index="5"]
 
 position = Vector2( 208, 16 )
 texture = ExtResource( 4 )
 offset = Vector2( 0, 2 )
 _sections_unfolded = [ "Offset" ]
 
-[node name="plant too" type="Sprite" parent="." index="4"]
+[node name="plant too" type="Sprite" parent="." index="6"]
 
 position = Vector2( 272, 16 )
 texture = ExtResource( 5 )
