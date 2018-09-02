@@ -31,7 +31,7 @@ func _process(delta):
 				if tilenode.get_class() == 'KinematicBody2D' and tilenode.type == 'Enemy':
 					number_of_enemies += 1
 	if number_of_enemies == 0:
-		load_level(1)
+		level_win()
 
 	#Very basic screen shake
 	$Camera2D.set_offset(Vector2( rand_range(-1.0, 1.0) * shake_amount, rand_range(-1.0, 1.0) * shake_amount ))
@@ -42,6 +42,12 @@ func _process(delta):
 		rumble = controller_shake
 	controller_shake = 0
 	rumble -= .1
+
+func level_win():
+	$Win.play()
+	while $Win.get_playback_position() < 1.5:
+		pass
+	load_level(1)
 
 #Loads the level plus number
 func load_level(number, force_load=0):
