@@ -54,13 +54,13 @@ func _physics_process(delta):
 
 	
 	if $Right.get_overlapping_bodies().size() and !$Left.get_overlapping_bodies().size():
-		dir = 1
+		dir = 1*(abs(SPEED)/SPEED)
 	if !$Right.get_overlapping_bodies().size() and $Left.get_overlapping_bodies().size():
-		dir = -1
+		dir = -1*(abs(SPEED)/SPEED)
 	if $Right2.get_overlapping_bodies().size() and !$Left2.get_overlapping_bodies().size():
-		dir = -1
+		dir = -1*(abs(SPEED)/SPEED)
 	if !$Right2.get_overlapping_bodies().size() and $Left2.get_overlapping_bodies().size():
-		dir = 1
+		dir = 1*(abs(SPEED)/SPEED)
 	vel.x += SPEED*dir*.2
 
 	move_and_slide(vel, Vector2(0, -1))
