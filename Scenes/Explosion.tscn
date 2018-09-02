@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Explosion.gd" type="Script" id=1]
 [ext_resource path="res://Assets/boom animation/boom animation frame 1.png" type="Texture" id=2]
 [ext_resource path="res://Assets/boom animation/boom animation frame 2(do not confuse with 2).png" type="Texture" id=3]
 [ext_resource path="res://Assets/boom animation/boom animation frame 3.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sound/Explosion_1.ogg" type="AudioStream" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -45,5 +46,16 @@ scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 2 )
 animation = "default"
 _sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="2"]
+
+stream = ExtResource( 5 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
 
 
