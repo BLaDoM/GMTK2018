@@ -50,7 +50,7 @@ extra_spacing_bottom = 25
 font_data = ExtResource( 3 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="Credits" type="Node" index="0"]
+[node name="Credits" type="Node"]
 
 script = ExtResource( 1 )
 

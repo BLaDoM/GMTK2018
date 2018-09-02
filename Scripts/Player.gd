@@ -48,10 +48,10 @@ func _physics_process(delta):
 	#Get current level
 	level = get_node("..").level
 	#Debug
-	if Input.is_action_just_pressed("ui_page_up"):
+	"""if Input.is_action_just_pressed("ui_page_up"):
 		get_parent().load_level(1)
 	if Input.is_action_just_pressed("ui_page_down"):
-		get_parent().load_level(-1)
+		get_parent().load_level(-1)"""
 
 	#Die if outside of screen
 	if self.get_global_transform_with_canvas().get_origin().x < 0 or self.get_global_transform_with_canvas().get_origin().x > get_viewport_rect().size.x or self.get_global_transform_with_canvas().get_origin().y > get_viewport_rect().size.y:
