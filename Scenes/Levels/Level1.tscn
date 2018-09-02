@@ -37,6 +37,7 @@ position = Vector2( -60, -390 )
 [node name="Enemy" parent="." index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 164.585, 311.62 )
+SPEED = -20
 
 [node name="Enemy2" parent="." index="2" instance=ExtResource( 3 )]
 
