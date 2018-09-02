@@ -34,12 +34,20 @@ var bullet_angle_vector
 
 var player_viewport_pos = Vector2()
 
+var level = 1
+
 func _ready():
 	health.value = MAX_HEALTH
 	reset()
 
 func _physics_process(delta):
+	#Get current level
+	level = get_node("..").level
 	#Debug
+	if Input.is_action_just_pressed("ui_page_up"):
+		get_parent().load_level(1)
+	if Input.is_action_just_pressed("ui_page_down"):
+		get_parent().load_level(-1)
 
 	#Die if outside of screen
 	if self.get_global_transform_with_canvas().get_origin().x < 0 or self.get_global_transform_with_canvas().get_origin().x > get_viewport_rect().size.x or self.get_global_transform_with_canvas().get_origin().y > get_viewport_rect().size.y:
@@ -163,7 +171,11 @@ func die():
 	get_parent().load_level(0)
 
 func reset():
-	set_position(Vector2(0,0))
+	#Set position to PlayerSpawnPoint
+	for node in get_parent().get_children():
+		if node.get_class() == 'TileMap':
+			print(node.name)
+			set_position(node.get_node("PlayerSpawnPoint").get_position())
 	vel = Vector2(0,0)
 
 func damage():

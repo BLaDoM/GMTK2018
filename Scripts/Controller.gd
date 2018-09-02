@@ -5,11 +5,12 @@ export var NUMBER_OF_LEVELS = 4
 
 var enemy_resource = preload("res://Scenes/Enemy.tscn")
 var enemy
-var level = 1
+var level = 0
 var number_of_enemies
 var shake_amount = 0
 
 func _ready():
+	load_level(1)
 	randomize()
 
 func _process(delta):

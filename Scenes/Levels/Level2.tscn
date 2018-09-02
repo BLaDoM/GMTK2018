@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://TileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/PlayerSpawnPoint.tscn" type="PackedScene" id=3]
 
 [node name="Level2" type="TileMap"]
 
@@ -32,5 +33,9 @@ position = Vector2( 281.598, 9.52261 )
 
 position = Vector2( 447.564, 167.326 )
 enemy_type = "Tank"
+
+[node name="PlayerSpawnPoint" parent="." index="2" instance=ExtResource( 3 )]
+
+position = Vector2( -400, 180 )
 
 
