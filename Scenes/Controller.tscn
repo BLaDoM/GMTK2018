@@ -10,7 +10,6 @@ NUMBER_OF_LEVELS = 5
 
 [node name="Camera2D" type="Camera2D" parent="." index="0"]
 
-position = Vector2( 0, -16 )
 anchor_mode = 1
 rotating = false
 current = true
