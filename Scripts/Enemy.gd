@@ -94,7 +94,7 @@ func _physics_process(delta):
 		vel.y = 0
 
 	#Bobbing sprite
-	$Sprites.set_position(Vector2(0, cos(get_position().x/5)*2))
+	$Sprites.set_position(Vector2(0, sin(get_position().x/5)*2))
 	if can_fly:
 		$Sprites.set_position(Vector2(0, cos(bob)))
 		bob += .1

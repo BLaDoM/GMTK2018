@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 15.2735 )
+extents = Vector2( 10, 15.9379 )
 
 [sub_resource type="SegmentShape2D" id=2]
 
@@ -19,7 +19,7 @@ b = Vector2( 0, 10 )
 [sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
-extents = Vector2( 11.0196, 16.1525 )
+extents = Vector2( 11.0196, 16.8825 )
 
 [node name="Enemy" type="KinematicBody2D"]
 
@@ -59,6 +59,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
 shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Left" type="Area2D" parent="." index="2"]
 
