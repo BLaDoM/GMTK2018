@@ -7,7 +7,7 @@
 [ext_resource path="res://Scenes/FadingLabel.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Details.tres" type="TileSet" id=6]
 
-[node name="LevelBase" type="TileMap"]
+[node name="LevelBase" type="TileMap" index="0"]
 
 mode = 0
 tile_set = ExtResource( 1 )
@@ -31,7 +31,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="SpikeBase" type="TileMap" parent="." index="0"]
+[node name="Spikes" type="TileMap" parent="." index="0"]
 
 mode = 0
 tile_set = ExtResource( 2 )
