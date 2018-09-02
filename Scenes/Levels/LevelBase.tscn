@@ -5,7 +5,7 @@
 [ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://TileSetDamage.tres" type="TileSet" id=4]
 
-[node name="LevelBase" type="TileMap" index="0"]
+[node name="LevelBase" type="TileMap"]
 
 mode = 0
 tile_set = ExtResource( 1 )
