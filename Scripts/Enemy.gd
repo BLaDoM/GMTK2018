@@ -52,16 +52,16 @@ func _physics_process(delta):
 	if !can_fly:
 		vel.y += GRAVITY
 
-	if enemy_type == 'Basic'  and !can_fly:
-		if $Right.get_overlapping_bodies().size() and !$Left.get_overlapping_bodies().size():
-			dir = 1
-		if !$Right.get_overlapping_bodies().size() and $Left.get_overlapping_bodies().size():
-			dir = -1
-		if $Right2.get_overlapping_bodies().size() and !$Left2.get_overlapping_bodies().size():
-			dir = -1
-		if !$Right2.get_overlapping_bodies().size() and $Left2.get_overlapping_bodies().size():
-			dir = 1
-		vel.x += SPEED*dir*.2
+	
+	if $Right.get_overlapping_bodies().size() and !$Left.get_overlapping_bodies().size():
+		dir = 1
+	if !$Right.get_overlapping_bodies().size() and $Left.get_overlapping_bodies().size():
+		dir = -1
+	if $Right2.get_overlapping_bodies().size() and !$Left2.get_overlapping_bodies().size():
+		dir = -1
+	if !$Right2.get_overlapping_bodies().size() and $Left2.get_overlapping_bodies().size():
+		dir = 1
+	vel.x += SPEED*dir*.2
 
 	move_and_slide(vel, Vector2(0, -1))
 
