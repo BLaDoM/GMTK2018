@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/what i have so far/Main char/dave/dave.png" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Assets/healthboxplaceholder.png" type="Texture" id=4]
 [ext_resource path="res://Assets/healthplaceholder.png.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/TestAudio.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/what i have so far/environment/Backgrounds/Bakground 1.png" type="Texture" id=7]
+[ext_resource path="res://Assets/what i have so far/environment/Backgrounds/Bakground 2 (unfinished).png" type="Texture" id=8]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -19,7 +21,7 @@ custom_solver_bias = 0.0
 radius = 14.6332
 height = 9.80283
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -146,6 +148,27 @@ nine_patch_stretch = false
 _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="Jukebox" parent="." index="8" instance=ExtResource( 6 )]
+
+[node name="Background" type="CanvasLayer" parent="." index="9"]
+
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background" index="0"]
+
+texture = ExtResource( 7 )
+centered = false
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="Sprite2" type="Sprite" parent="Background" index="1"]
+
+visible = false
+position = Vector2( -360, 202.5 )
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 8 )
 
 [connection signal="timeout" from="Reload" to="." method="_on_Reload_timeout"]
 
