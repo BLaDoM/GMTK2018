@@ -37,6 +37,14 @@ func _physics_process(delta):
 	if health <= 0:
 		die()
 
+	#Enemy damaged
+	if $Area2D.get_overlapping_bodies().size() > 0:
+		for body in $Area2D.get_overlapping_bodies():
+			print(body.name)
+			if body.name != 'Player':
+				if body.name == 'Spikes':
+					damaged()
+
 	#Die if outside of screen
 	if self.get_global_transform_with_canvas().get_origin().x < 0 or self.get_global_transform_with_canvas().get_origin().x > get_viewport_rect().size.x or self.get_global_transform_with_canvas().get_origin().y > get_viewport_rect().size.y:
 		die()
