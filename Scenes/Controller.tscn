@@ -5,7 +5,7 @@
 [ext_resource path="res://Assets/Sound/Death_1.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Assets/Sound/Win_Theme_1.ogg" type="AudioStream" id=4]
 
-[node name="Controller" type="Node" index="0"]
+[node name="Controller" type="Node"]
 
 script = ExtResource( 1 )
 NUMBER_OF_LEVELS = 6
