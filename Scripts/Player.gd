@@ -6,7 +6,7 @@ export var KICKBACK = 500
 export var GROUND_FRICTION = .8
 export var AIR_FRICTION = .98
 export var WALL_FRICTION = .6
-export var MAX_HEALTH = 10
+export var MAX_HEALTH = 6
 const DEAD_ZONE = .2
 
 export var type = 'Player'

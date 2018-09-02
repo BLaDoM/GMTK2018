@@ -36,7 +36,7 @@ KICKBACK = 500
 GROUND_FRICTION = 0.8
 AIR_FRICTION = 0.98
 WALL_FRICTION = 0.6
-MAX_HEALTH = 10
+MAX_HEALTH = 6
 type = "Player"
 
 [node name="PlayerSprite" type="Sprite" parent="." index="0"]
