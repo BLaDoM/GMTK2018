@@ -7,7 +7,7 @@
 [ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/FadingLabel.tscn" type="PackedScene" id=6]
 
-[node name="Level2" type="TileMap" index="0"]
+[node name="Level2" type="TileMap"]
 
 mode = 0
 tile_set = ExtResource( 1 )

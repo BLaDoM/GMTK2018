@@ -1,7 +1,7 @@
 extends Node
 
 var audioBuses = {} # Dictionary containing each bus and it's current target volume
-const volumes = [[0.0, 0.0, 0.0], [-100.0, 0.0, 0.0], [-100.0, -100.0, 0.0], [-100.0, - 100.0, -100.0], [-100.0, - 100.0, -100.0]]
+const volumes = [[0.0, -100.0, -100.0, -100.0], [0.0, 0.0, -100.0, -100.0], [0.0, 0.0, 0.0, -100.0], [0.0, 0.0, 0.0, 0.0]]
 var t = 0.0
 
 func _ready():
