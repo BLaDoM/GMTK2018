@@ -1,7 +1,7 @@
 extends Node
 
 #so a nonexisten level doesn't get loaded
-export var NUMBER_OF_LEVELS = 4
+export var NUMBER_OF_LEVELS = 5
 
 var enemy_resource = preload("res://Scenes/Enemy.tscn")
 var enemy
