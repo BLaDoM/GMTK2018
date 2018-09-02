@@ -8,7 +8,6 @@
 
 [node name="Level1" type="TileMap" index="0"]
 
-position = Vector2( 0, -10 )
 mode = 0
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
@@ -41,7 +40,7 @@ position = Vector2( 164.585, 311.62 )
 
 [node name="Enemy2" parent="." index="2" instance=ExtResource( 3 )]
 
-position = Vector2( 470, 190 )
+position = Vector2( 490, 220 )
 
 [node name="Enemy8" parent="." index="3" instance=ExtResource( 3 )]
 
@@ -49,6 +48,7 @@ position = Vector2( 170, -380 )
 
 [node name="Obstacle" parent="." index="4" instance=ExtResource( 4 )]
 
+visible = false
 position = Vector2( 539.469, 31.7335 )
 
 [node name="Label" parent="." index="5" instance=ExtResource( 5 )]
