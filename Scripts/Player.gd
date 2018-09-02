@@ -175,6 +175,8 @@ func shoot():
 	vel += Vector2(-angle_vector.x * KICKBACK * 1.2, angle_vector.y * KICKBACK * 1)
 	if is_on_floor() and angle_vector.y * KICKBACK * 1 > 0:
 		vel.y += (-angle_vector.y * KICKBACK * .8)*2
+	if vel.y < 0:
+		vel.y *= .8
 	bullet = bullet_resource.instance()
 	bullet.set_position(get_position())
 	bullet.angle = angle

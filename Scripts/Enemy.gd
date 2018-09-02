@@ -70,7 +70,7 @@ func _physics_process(delta):
 	move_and_slide(vel, Vector2(0, -1))
 
 	#Spriteflip
-	if vel.x > 0:
+	if dir > 0:
 		for sprite in $Sprites.get_children():
 			sprite.flip_h = true
 	else:
