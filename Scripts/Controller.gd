@@ -1,18 +1,18 @@
 extends Node
 
 #so a nonexisten level doesn't get loaded
-export var NUMBER_OF_LEVELS = 6
+export var NUMBER_OF_LEVELS = 5
 
 var enemy_resource = preload("res://Scenes/Enemy.tscn")
 var enemy
-var level = 0
+var level = 1
 var number_of_enemies
 var shake_amount = 0
 var controller_shake = 0
 var rumble = 0
 
 func _ready():
-	load_level(1)
+	load_level(0)
 	randomize()
 
 func _process(delta):
@@ -44,11 +44,14 @@ func _process(delta):
 	rumble -= .1
 
 #Loads the level plus number
-func load_level(number):
+func load_level(number, force_load=0):
 	remove_child(get_node("Level" + str(level)))
+	if force_load:
+		level = force_load
 	if NUMBER_OF_LEVELS > level:
 		level += number
 	else:
 		level = 1
+	print(level)
 	add_child(load("res://Scenes/Levels/Level" + str(level) + ".tscn").instance())
 	get_node("Player").reset()

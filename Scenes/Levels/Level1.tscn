@@ -37,11 +37,12 @@ SPEED = -10
 
 [node name="Enemy2" parent="." index="2" instance=ExtResource( 3 )]
 
-position = Vector2( -704.941, 126.479 )
+position = Vector2( -660, 210 )
 SPEED = 10
 
 [node name="SpikeBase" type="TileMap" parent="." index="3"]
 
+visible = false
 mode = 0
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 32, 32 )
@@ -63,7 +64,6 @@ _sections_unfolded = [ "Cell" ]
 
 [node name="Label" parent="." index="4" instance=ExtResource( 5 )]
 
-visible = true
 margin_left = -282.0
 margin_top = -304.0
 margin_right = -176.0

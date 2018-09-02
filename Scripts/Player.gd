@@ -160,8 +160,10 @@ func _input(event):
 		if $Reload.is_stopped():
 			$Reload.start()
 			shoot()
+	#Restart
 	if event.is_action_pressed("restart"):
 		die()
+	#Toggle fullscreen
 	if event.is_action_pressed("fullscreen"):
 		OS.window_fullscreen = !OS.window_fullscreen
 

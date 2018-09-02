@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 export var SPEED = 20
 export var GRAVITY = 10
-export var KICKBACK = 500
 export var GROUND_FRICTION = .97
 export var AIR_FRICTION = .98
 export var WALL_FRICTION = .6
