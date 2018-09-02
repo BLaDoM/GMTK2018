@@ -40,6 +40,7 @@ var rx_axis = 0
 
 func _ready():
 	health.value = MAX_HEALTH
+	$Jukebox.updateVolumes(1-(health.value/6))
 	reset()
 
 func _physics_process(delta):
@@ -203,3 +204,5 @@ func damage():
 		if health.value <= 0:
 			die()
 		$InvincibilityFrames.start()
+		#Music update
+		$Jukebox.updateVolumes(1-(health.value/6))
