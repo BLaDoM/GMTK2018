@@ -4,6 +4,14 @@ extends Node
 export var NUMBER_OF_LEVELS = 5
 
 var enemy_resource = preload("res://Scenes/Enemy.tscn")
+
+var level1 = preload("res://Scenes/Levels/Level1.tscn")
+var level2 = preload("res://Scenes/Levels/Level2.tscn")
+var level3 = preload("res://Scenes/Levels/Level3.tscn")
+var level4 = preload("res://Scenes/Levels/Level4.tscn")
+var level5 = preload("res://Scenes/Levels/Level5.tscn")
+var level6 = preload("res://Scenes/Levels/Level6.tscn")
+
 var enemy
 var level = 1
 var number_of_enemies
@@ -59,5 +67,17 @@ func load_level(number, force_load=0):
 	else:
 		level = 1
 	print(level)
-	add_child(load("res://Scenes/Levels/Level" + str(level) + ".tscn").instance())
+	if level == 1:
+		add_child(level1.instance())
+	if level == 2:
+		add_child(level2.instance())
+	if level == 3:
+		add_child(level3.instance())
+	if level == 4:
+		add_child(level4.instance())
+	if level == 5:
+		add_child(level5.instance())
+	if level == 6:
+		add_child(level6.instance())
+	
 	get_node("Player").reset()
