@@ -22,13 +22,13 @@ func _physics_process(delta):
 				get_node("../../Player").color = Color(10,10,10,1)
 				get_node("../../Player/Reload").stop()
 				body.damaged()
-				get_node("../..").shake_amount = 50
 			die()
 
 func _on_Life_timeout():
 	die()
 
 func die():
+	get_node("../..").shake_amount = 50
 	explosion = explosion_resource.instance()
 	explosion.set_position(get_position())
 	get_parent().add_child(explosion)

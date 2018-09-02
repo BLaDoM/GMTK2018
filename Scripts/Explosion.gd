@@ -7,17 +7,18 @@ var bodies
 
 func _ready():
 	$Sprite.set_scale(Vector2(.1, .1))
+	$Sprite.playing = true
 	pass
 
-func _process(delta):
+func _physics_process(delta):
 	#Grow
-	$Sprite.set_scale($Sprite.get_scale()*1.2)
+	$Sprite.set_scale($Sprite.get_scale()*1.1)
 
 	#Fade out
-	set_modulate(Color(1,1,1, 3-$Sprite.get_scale().x ))
+	set_modulate(Color(1,1,1, 2-$Sprite.get_scale().x ))
 
 	#If too big, die
-	if $Sprite.get_scale().x > 3:
+	if $Sprite.get_scale().x > 2:
 		queue_free()
 
 	#Collision/Knockback
