@@ -53,10 +53,11 @@ func _physics_process(delta):
 		vel.y += GRAVITY
 
 	if SPEED:
-		if $Right.get_overlapping_bodies().size() and !$Left.get_overlapping_bodies().size():
-			dir = 1*(abs(SPEED)/SPEED)
-		if !$Right.get_overlapping_bodies().size() and $Left.get_overlapping_bodies().size():
-			dir = -1*(abs(SPEED)/SPEED)
+		if !can_fly:
+			if $Right.get_overlapping_bodies().size() and !$Left.get_overlapping_bodies().size():
+				dir = 1*(abs(SPEED)/SPEED)
+			if !$Right.get_overlapping_bodies().size() and $Left.get_overlapping_bodies().size():
+				dir = -1*(abs(SPEED)/SPEED)
 		if $Right2.get_overlapping_bodies().size() and !$Left2.get_overlapping_bodies().size():
 			dir = -1*(abs(SPEED)/SPEED)
 		if !$Right2.get_overlapping_bodies().size() and $Left2.get_overlapping_bodies().size():

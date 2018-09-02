@@ -7,6 +7,7 @@ export var GROUND_FRICTION = .8
 export var AIR_FRICTION = .98
 export var WALL_FRICTION = .6
 export var MAX_HEALTH = 6
+const DEAD_ZONE = .2
 
 export var type = 'Player'
 
@@ -35,6 +36,7 @@ var bullet_angle_vector
 var player_viewport_pos = Vector2()
 
 var level = 1
+var rx_axis = 0
 
 func _ready():
 	health.value = MAX_HEALTH
@@ -71,6 +73,14 @@ func _physics_process(delta):
 		else:
 			#Air movement speed
 			vel.x += -SPEED*.1
+	#Controller
+	if abs(Input.get_joy_axis(0, 0)) > DEAD_ZONE and abs(vel.x) < SPEED*2:
+		if is_on_floor() and ($Reload.is_stopped() or $Reload.time_left < .8):
+			#Ground movement speed
+			vel.x += Input.get_joy_axis(0,0)*SPEED
+		else:
+			#Air movement speed
+			vel.x += Input.get_joy_axis(0,0)*SPEED*.1
 	
 	#Gravity
 	vel.y += GRAVITY
@@ -95,14 +105,20 @@ func _physics_process(delta):
 	if is_on_ceiling() and vel.y < 0:
 		vel.y = 0
 
-	#Get mouse position relative to  player
-	mouse_pos = get_viewport().get_mouse_position() - self.get_global_transform_with_canvas().get_origin()
 	#Get mouse position relative to center of screen
 	#mouse_pos = Vector2(get_viewport().get_mouse_position().x - (res.x/2) - player_viewport_pos.x, get_viewport().get_mouse_position().y - (res.y/2) - player_viewport_pos.y)
 
 	#RotateGun
-	angle = atan2(mouse_pos.x, -mouse_pos.y)*(180/PI)
-	angle_vector = Vector2(sin(angle*(PI/180)), cos(angle*(PI/180)))
+	#Check for mouse or controller
+	if !abs(Input.get_joy_axis(0,2)) > DEAD_ZONE and !abs(Input.get_joy_axis(0,3)) > DEAD_ZONE:
+		#Get mouse position relative to  player
+		mouse_pos = get_viewport().get_mouse_position() - self.get_global_transform_with_canvas().get_origin()
+		angle = atan2(mouse_pos.x, -mouse_pos.y)*(180/PI)
+		angle_vector = Vector2(sin(angle*(PI/180)), cos(angle*(PI/180)))
+	else:
+		#Controller
+		angle_vector = Vector2(Input.get_joy_axis(0,2), -Input.get_joy_axis(0,3))
+		angle = atan2(angle_vector.x, angle_vector.y)*(180/PI)
 	$Gun.set_rotation_degrees(angle - 90)
 
 	#Flip sprite

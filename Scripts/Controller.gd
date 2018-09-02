@@ -8,6 +8,8 @@ var enemy
 var level = 0
 var number_of_enemies
 var shake_amount = 0
+var controller_shake = 0
+var rumble = 0
 
 func _ready():
 	load_level(1)
@@ -34,6 +36,12 @@ func _process(delta):
 	#Very basic screen shake
 	$Camera2D.set_offset(Vector2( rand_range(-1.0, 1.0) * shake_amount, rand_range(-1.0, 1.0) * shake_amount ))
 	shake_amount *= .6
+	#Controller rumble
+	if rumble <= controller_shake:
+		Input.start_joy_vibration(0,controller_shake,controller_shake,controller_shake*.3)
+		rumble = controller_shake
+	controller_shake = 0
+	rumble -= .1
 
 #Loads the level plus number
 func load_level(number):

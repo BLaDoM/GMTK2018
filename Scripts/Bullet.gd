@@ -11,7 +11,8 @@ var angle
 var angle_vector
 
 func _ready():
-	get_node("../..").shake_amount = 5
+	get_node("../..").shake_amount = 10
+	get_node("../..").controller_shake = .5
 	set_rotation_degrees(angle)
 
 func _physics_process(delta):
@@ -29,6 +30,7 @@ func _on_Life_timeout():
 
 func die():
 	get_node("../..").shake_amount = 50
+	get_node("../..").controller_shake = 1
 	explosion = explosion_resource.instance()
 	explosion.set_position(get_position())
 	get_parent().add_child(explosion)
