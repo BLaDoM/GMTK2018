@@ -41,7 +41,7 @@ var rx_axis = 0
 func _ready():
 	health.max_value = MAX_HEALTH
 	health.value = MAX_HEALTH
-	$Jukebox.updateVolumes((health.value/MAX_HEALTH))
+	#$Jukebox.updateVolumes((health.value/MAX_HEALTH))
 	reset()
 
 func _physics_process(delta):
@@ -89,7 +89,7 @@ func _physics_process(delta):
 	
 	#Move
 	move_and_slide(vel, Vector2(0, -1))
-	
+
 	#On floor
 	if is_on_floor():
 		vel.y = 0
@@ -126,8 +126,10 @@ func _physics_process(delta):
 	#Flip sprite
 	if angle < 0:
 		$Gun.flip_v = true
+		$PlayerSprite.flip_h = true
 	else:
 		$Gun.flip_v = false
+		$PlayerSprite.flip_h = false
 
 	#White flash
 	get_node("PlayerSprite").modulate = color
@@ -206,4 +208,4 @@ func damage():
 			die()
 		$InvincibilityFrames.start()
 		#Music update
-		$Jukebox.updateVolumes((health.value/MAX_HEALTH))
+		#$Jukebox.updateVolumes((health.value/MAX_HEALTH))

@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tank.png-48e20b3b751df0a0b7384875045634f4.stex"
+path="res://.import/Xplodr.png-ae88801b359242c16159153f700ffeb7.stex"
 
 [deps]
 
-source_file="res://Assets/what i have so far/enemies/tank.png"
-dest_files=[ "res://.import/tank.png-48e20b3b751df0a0b7384875045634f4.stex" ]
+source_file="res://Assets/what i have so far/enemies/Xplodr.png"
+dest_files=[ "res://.import/Xplodr.png-ae88801b359242c16159153f700ffeb7.stex" ]
 
 [params]
 

@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
-[ext_resource path="res://Assets/placeholder_32x32.png" type="Texture" id=2]
+[ext_resource path="res://Assets/what i have so far/enemies/tank.png" type="Texture" id=2]
+[ext_resource path="res://Assets/what i have so far/enemies/Xplodr.png" type="Texture" id=3]
+[ext_resource path="res://Assets/placeholder_32x32.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -29,16 +31,29 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Collision" ]
 SPEED = 20
 GRAVITY = 10
-KICKBACK = 500
 GROUND_FRICTION = 0.97
 AIR_FRICTION = 0.98
 WALL_FRICTION = 0.6
 enemy_type = "Basic"
 can_fly = false
 
-[node name="Sprite" type="Sprite" parent="." index="0"]
+[node name="Sprites" type="Node2D" parent="." index="0"]
 
+[node name="Tank" type="Sprite" parent="Sprites" index="0"]
+
+visible = false
 texture = ExtResource( 2 )
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="Xplodr" type="Sprite" parent="Sprites" index="1"]
+
+visible = false
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Default" type="Sprite" parent="Sprites" index="2"]
+
+texture = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]

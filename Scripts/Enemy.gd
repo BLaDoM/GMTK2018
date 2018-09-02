@@ -20,6 +20,7 @@ var bob = 1
 var color = Color(1,1,1,1)
 
 func _ready():
+
 	#Initialize bobbing
 	randomize()
 	bob = randf()*2 / 2
@@ -28,8 +29,11 @@ func _ready():
 	if enemy_type == 'Tank':
 		health = 2
 		set_scale(Vector2(1.5, 1.5))
+		$Sprites/Default.set_visible(false)
+		$Sprites/Tank.set_visible(true)
 	if enemy_type == 'Boom':
-		set_modulate(Color(1,10,1,1))
+		$Sprites/Default.set_visible(false)
+		$Sprites/Xplodr.set_visible(true)
 	pass
 
 func _physics_process(delta):
@@ -65,6 +69,14 @@ func _physics_process(delta):
 
 	move_and_slide(vel, Vector2(0, -1))
 
+	#Spriteflip
+	if vel.x > 0:
+		for sprite in $Sprites.get_children():
+			sprite.flip_h = true
+	else:
+		for sprite in $Sprites.get_children():
+			sprite.flip_h = false
+
 	#On floor
 	if is_on_floor():
 		vel.y = 0
@@ -82,13 +94,13 @@ func _physics_process(delta):
 		vel.y = 0
 
 	#Bobbing sprite
-	$Sprite.set_position(Vector2(0, cos(get_position().x/5)*2))
+	$Sprites.set_position(Vector2(0, cos(get_position().x/5)*2))
 	if can_fly:
-		$Sprite.set_position(Vector2(0, cos(bob)))
+		$Sprites.set_position(Vector2(0, cos(bob)))
 		bob += .1
 
 	#Color flash
-	get_node("Sprite").modulate = color
+	get_node("Sprites").modulate = color
 	if color.r > 1:
 		color.r *= .8
 	if color.g > 1:
