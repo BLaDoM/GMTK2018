@@ -40,7 +40,6 @@ func _physics_process(delta):
 	#Enemy damaged
 	if $Area2D.get_overlapping_bodies().size() > 0:
 		for body in $Area2D.get_overlapping_bodies():
-			print(body.name)
 			if body.name != 'Player':
 				if body.name == 'Spikes':
 					damaged()
