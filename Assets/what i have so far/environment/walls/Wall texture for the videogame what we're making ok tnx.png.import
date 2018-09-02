@@ -1,0 +1,29 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/Wall texture for the videogame what we're making ok tnx.png-eb7b8d5f2913b1c65d8f2dbd43ef4a1d.stex"
+
+[deps]
+
+source_file="res://Assets/what i have so far/environment/walls/Wall texture for the videogame what we're making ok tnx.png"
+dest_files=[ "res://.import/Wall texture for the videogame what we're making ok tnx.png-eb7b8d5f2913b1c65d8f2dbd43ef4a1d.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0
