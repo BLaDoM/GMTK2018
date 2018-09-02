@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/what i have so far/Main char/dave/dave.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scenes/TestAudio.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/what i have so far/environment/Backgrounds/Bakground 1.png" type="Texture" id=7]
 [ext_resource path="res://Assets/what i have so far/environment/Backgrounds/Bakground 2 (unfinished).png" type="Texture" id=8]
+[ext_resource path="res://Assets/background.png" type="Texture" id=9]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -159,16 +160,24 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="Sprite" type="Sprite" parent="Background" index="0"]
 
+visible = false
 texture = ExtResource( 7 )
 centered = false
 _sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="Sprite2" type="Sprite" parent="Background" index="1"]
 
+visible = false
 scale = Vector2( 4, 4 )
 texture = ExtResource( 8 )
 centered = false
 _sections_unfolded = [ "Offset" ]
+
+[node name="background" type="Sprite" parent="Background" index="2"]
+
+texture = ExtResource( 9 )
+centered = false
+_sections_unfolded = [ "Offset", "Transform" ]
 
 [connection signal="timeout" from="Reload" to="." method="_on_Reload_timeout"]
 
