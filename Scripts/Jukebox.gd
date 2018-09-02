@@ -16,7 +16,7 @@ func _process(delta):
 		audioBuses.keys()[i].volume_db = lerp(audioBuses.keys()[i].volume_db, audioBuses.values()[i], delta * 0.1)
 
 func updateVolumes(healthPercentage):
-	var i = ceil(float(healthPercentage) * 4) - 1
+	var i = 3-ceil(float(healthPercentage) * 4) - 1
 	print(str(healthPercentage) + " " + str(i))
 	audioBuses = {
 		get_node("AudioStreamPlayer"):volumes[i][0],
