@@ -38,5 +38,6 @@ _sections_unfolded = [ "Transform" ]
 
 z_index = 3
 _sections_unfolded = [ "Transform", "Z Index" ]
+MAX_HEALTH = 10
 
 

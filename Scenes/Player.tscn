@@ -36,7 +36,7 @@ KICKBACK = 500
 GROUND_FRICTION = 0.8
 AIR_FRICTION = 0.98
 WALL_FRICTION = 0.6
-MAX_HEALTH = 6
+MAX_HEALTH = 10
 type = "Player"
 
 [node name="PlayerSprite" type="Sprite" parent="." index="0"]
@@ -135,10 +135,10 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 min_value = 0.0
-max_value = 6.0
+max_value = 0.0
 step = 1.0
 page = 0.0
-value = 1.0
+value = 0.0
 exp_edit = false
 rounded = true
 texture_under = ExtResource( 4 )

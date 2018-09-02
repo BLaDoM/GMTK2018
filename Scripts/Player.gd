@@ -6,7 +6,7 @@ export var KICKBACK = 500
 export var GROUND_FRICTION = .8
 export var AIR_FRICTION = .98
 export var WALL_FRICTION = .6
-export var MAX_HEALTH = 6
+export var MAX_HEALTH = 10
 const DEAD_ZONE = .2
 
 export var type = 'Player'
@@ -39,8 +39,9 @@ var level = 1
 var rx_axis = 0
 
 func _ready():
+	health.max_value = MAX_HEALTH
 	health.value = MAX_HEALTH
-	$Jukebox.updateVolumes(1-(health.value/6))
+	$Jukebox.updateVolumes((health.value/MAX_HEALTH))
 	reset()
 
 func _physics_process(delta):
@@ -205,4 +206,4 @@ func damage():
 			die()
 		$InvincibilityFrames.start()
 		#Music update
-		$Jukebox.updateVolumes(1-(health.value/6))
+		$Jukebox.updateVolumes((health.value/MAX_HEALTH))
