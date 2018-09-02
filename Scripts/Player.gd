@@ -46,6 +46,7 @@ func _ready():
 
 func _physics_process(delta):
 	#Get current level
+	$Jukebox.updateVolumes((health.value/MAX_HEALTH))
 	level = get_node("..").level
 	#Debug
 	"""if Input.is_action_just_pressed("ui_page_up"):
