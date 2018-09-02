@@ -1,10 +1,14 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Explosion.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Placeholder.jpg" type="Texture" id=2]
+[ext_resource path="res://Assets/it goes boom.png" type="Texture" id=2]
 
+[sub_resource type="CircleShape2D" id=1]
 
-[sub_resource type="SpriteFrames" id=1]
+custom_solver_bias = 0.0
+radius = 80.0
+
+[sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
@@ -13,12 +17,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=2]
-
-custom_solver_bias = 0.0
-radius = 80.0
-
-[node name="Explosion" type="Area2D"]
+[node name="Explosion" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -29,15 +28,16 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
-EXPLOSION_POWER = 1.5
+power = 1.5
+PLAYER_POWER_MODIFIER = 0.2
 
-[node name="Sprite" type="AnimatedSprite" parent="." index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
-frames = SubResource( 1 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
+
+frames = SubResource( 2 )
 animation = "default"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
-
-shape = SubResource( 2 )
 
 
