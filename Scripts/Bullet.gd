@@ -32,7 +32,7 @@ func _physics_process(delta):
 			die()
 
 func _on_Life_timeout():
-	die()
+	queue_free()
 
 func die():
 	get_node("../..").shake_amount = 50

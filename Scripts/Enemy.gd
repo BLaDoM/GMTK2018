@@ -48,7 +48,7 @@ func _physics_process(delta):
 					damaged()
 
 	#Die if outside of screen
-	if self.get_global_transform_with_canvas().get_origin().x < 0 or self.get_global_transform_with_canvas().get_origin().x > get_viewport_rect().size.x or self.get_global_transform_with_canvas().get_origin().y > get_viewport_rect().size.y:
+	if self.get_global_transform_with_canvas().get_origin().x < 0 or self.get_global_transform_with_canvas().get_origin().x > get_viewport_rect().size.x or self.get_global_transform_with_canvas().get_origin().y > get_viewport_rect().size.y or self.get_global_transform_with_canvas().get_origin().y < -10:
 		die()
 
 	#Gravity
