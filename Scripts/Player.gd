@@ -190,6 +190,10 @@ func _on_Reload_timeout():
 	color = Color(10, 10, 10, 1)
 
 func die():
+	#Deathsound
+	get_node("../DeathSound").set_position(get_position())
+	get_node("../DeathSound").play()
+	#Lost health
 	health.value = MAX_HEALTH
 	#health.set_visible(false)
 	get_parent().load_level(0)
