@@ -39,5 +39,5 @@ func load_level(number):
 	if NUMBER_OF_LEVELS > level:
 		remove_child(get_node("Level" + str(level)))
 		level += number
-		add_child(load("res://Scenes/Level" + str(level) + ".tscn").instance())
+		add_child(load("res://Scenes/Levels/Level" + str(level) + ".tscn").instance())
 		get_node("Player").reset()
