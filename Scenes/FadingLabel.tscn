@@ -7,7 +7,7 @@
 custom_solver_bias = 0.0
 radius = 161.245
 
-[node name="Label" type="Label"]
+[node name="Label" type="Label" index="0"]
 
 visible = false
 anchor_left = 0.0

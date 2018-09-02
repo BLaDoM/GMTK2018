@@ -174,7 +174,6 @@ func reset():
 	#Set position to PlayerSpawnPoint
 	for node in get_parent().get_children():
 		if node.get_class() == 'TileMap':
-			print(node.name)
 			set_position(node.get_node("PlayerSpawnPoint").get_position())
 	vel = Vector2(0,0)
 
