@@ -37,8 +37,10 @@ func _process(delta):
 
 #Loads the level plus number
 func load_level(number):
+	remove_child(get_node("Level" + str(level)))
 	if NUMBER_OF_LEVELS > level:
-		remove_child(get_node("Level" + str(level)))
 		level += number
-		add_child(load("res://Scenes/Levels/Level" + str(level) + ".tscn").instance())
-		get_node("Player").reset()
+	else:
+		level = 1
+	add_child(load("res://Scenes/Levels/Level" + str(level) + ".tscn").instance())
+	get_node("Player").reset()
