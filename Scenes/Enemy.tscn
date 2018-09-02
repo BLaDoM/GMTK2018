@@ -13,7 +13,7 @@ extents = Vector2( 10, 15.9379 )
 [sub_resource type="SegmentShape2D" id=2]
 
 custom_solver_bias = 0.0
-a = Vector2( 0, 0 )
+a = Vector2( -0.0527372, -15.5164 )
 b = Vector2( 0, 10 )
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -21,7 +21,7 @@ b = Vector2( 0, 10 )
 custom_solver_bias = 0.0
 extents = Vector2( 11.0196, 16.8825 )
 
-[node name="Enemy" type="KinematicBody2D"]
+[node name="Enemy" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 3
@@ -58,6 +58,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
+visible = false
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
@@ -93,7 +94,7 @@ audio_bus_name = "Master"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left2" index="0"]
 
-position = Vector2( -13.2263, -5.02993 )
+position = Vector2( -12.8408, 4.73696 )
 shape = SubResource( 2 )
 
 [node name="Right" type="Area2D" parent="." index="4"]
@@ -129,11 +130,13 @@ audio_bus_name = "Master"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right2" index="0"]
 
-position = Vector2( 14.0741, 19.0935 )
+position = Vector2( 14.5881, 28.2178 )
 shape = SubResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="." index="6"]
 
+editor/display_folded = true
+visible = false
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0

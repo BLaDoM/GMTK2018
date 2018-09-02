@@ -7,7 +7,7 @@
 [node name="Controller" type="Node"]
 
 script = ExtResource( 1 )
-NUMBER_OF_LEVELS = 5
+NUMBER_OF_LEVELS = 6
 
 [node name="Camera2D" type="Camera2D" parent="." index="0"]
 
